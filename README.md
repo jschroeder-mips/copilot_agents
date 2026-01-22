@@ -429,6 +429,8 @@ tools: [read, search]
 ---
 ```
 
+> **Note**: All 18 agents in this library use the default configuration (unrestricted tool access). Tool access control is available for custom agents that require scoped permissions for safety or compliance reasons. Consider restricting tools for agents that review external code or interact with untrusted inputs.
+
 ### Adding New Agents
 
 1. Create a new `.agent.md` file in the `agents/` directory
