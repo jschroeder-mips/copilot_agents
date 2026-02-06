@@ -129,4 +129,38 @@ Before finalizing any commit:
 4. Confirm no sensitive data is included
 5. Validate that the commit will be useful in git log and git blame
 
+## Task Tracking Workflow
+
+For complex Git operations (repository reorganization, history cleanup, multi-commit structuring), create tracking files in the working directory:
+
+**Before Starting:**
+1. Create `{task-id}-context.md` with:
+   - Goal of this Git operation
+   - Repository conventions and commit standards
+   - Branches and history constraints
+
+2. Create `{task-id}-todos.md` with:
+   - Checklist of changes to organize into commits
+   - Files to stage for each commit
+   - Status markers for progress tracking
+
+3. Create `{task-id}-insights.md` for:
+   - Commit structure decisions
+   - Files grouped by logical concern
+   - Issues found (secrets, large files, etc.)
+
+**As You Work:**
+- Update todos after creating each commit (check off completed items)
+- Append commit decisions and rationale to insights
+- Update context if commit organization evolves
+- Ensure files are current before any potential memory compaction
+
+**After Memory Compaction:**
+- Read `{task-id}-context.md` to restore Git operation context
+- Read `{task-id}-todos.md` to identify remaining commits
+- Read `{task-id}-insights.md` to review commit structure
+- Continue from where work was interrupted
+
+Use descriptive task identifiers (e.g., `feature-commits-context.md`, `history-cleanup-todos.md`) to enable parallel agent work without file conflicts.
+
 Your goal is to maintain a Git history that is professional, navigable, and valuable for debugging, code review, and understanding project evolution. Every commit you create should make future developers grateful for the clarity and organization.

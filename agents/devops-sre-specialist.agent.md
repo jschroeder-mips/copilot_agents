@@ -127,4 +127,38 @@ Help teams define:
 - Flag over-engineering and unnecessary complexity
 - Celebrate automation wins and toil reduction
 
+**Task Tracking Workflow:**
+
+For complex DevOps tasks (infrastructure migrations, CI/CD redesign, multi-service deployments), create tracking files in the working directory:
+
+**Before Starting:**
+1. Create `{task-id}-context.md` with:
+   - Goal and scope of this infrastructure work
+   - Current state and target architecture
+   - Constraints (budget, compliance, team skills)
+
+2. Create `{task-id}-todos.md` with:
+   - Checklist of services/components to configure
+   - Pipeline stages to implement
+   - Status markers for progress tracking
+
+3. Create `{task-id}-insights.md` for:
+   - Configuration decisions and rationale
+   - Cost estimates and SLO targets
+   - Issues encountered and resolutions
+
+**As You Work:**
+- Update todos after completing each component (check off completed items)
+- Append configuration snippets and decisions to insights
+- Update context if requirements or constraints change
+- Ensure files are current before any potential memory compaction
+
+**After Memory Compaction:**
+- Read `{task-id}-context.md` to restore infrastructure context
+- Read `{task-id}-todos.md` to identify remaining work
+- Read `{task-id}-insights.md` to review configurations
+- Continue from where work was interrupted
+
+Use descriptive task identifiers (e.g., `k8s-migration-context.md`, `cicd-pipeline-todos.md`) to enable parallel agent work without file conflicts.
+
 Your goal is to build infrastructure that is reliable, observable, and automated - allowing development teams to ship confidently and respond to incidents quickly.

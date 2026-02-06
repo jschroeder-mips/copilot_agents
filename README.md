@@ -431,6 +431,48 @@ tools: [read, search]
 
 > **Note**: All 18 agents in this library use the default configuration (unrestricted tool access). Tool access control is available for custom agents that require scoped permissions for safety or compliance reasons. Consider restricting tools for agents that review external code or interact with untrusted inputs.
 
+### Task Tracking Workflow
+
+All agents in this library support a **Task Tracking Workflow** for complex, multi-step tasks. This paradigm enables:
+
+- **State persistence** across memory compaction events
+- **Progress tracking** for iterative work
+- **Parallel agent operation** without file conflicts
+- **Recovery** from session interruptions
+
+**How it works:**
+
+For complex tasks, agents create three tracking files in the working directory:
+
+| File | Purpose |
+|------|---------|
+| `{task-id}-context.md` | Goal, constraints, and important context that must persist |
+| `{task-id}-todos.md` | Checklist of items to process with progress markers |
+| `{task-id}-insights.md` | Findings, recommendations, and results (iteratively updated) |
+
+**Task identifiers** should be descriptive (e.g., `auth-audit`, `api-migration`, `sprint-14`) to enable multiple agents to work simultaneously without conflicts.
+
+**Example workflow:**
+
+```
+# Before starting a security audit
+@security-auditor Audit authentication code. Use task ID "auth-audit"
+
+# Agent creates:
+# - auth-audit-context.md (audit scope, threat model)
+# - auth-audit-todos.md (components to review)
+# - auth-audit-insights.md (vulnerabilities found)
+
+# After memory compaction, the agent reads these files to resume work
+```
+
+**When agents use this workflow:**
+- Multi-file code reviews or audits
+- Architecture assessments spanning multiple components
+- Debugging sessions with multiple hypotheses
+- Project planning or sprint management
+- Any task requiring more context than fits in a single session
+
 ### Adding New Agents
 
 1. Create a new `.agent.md` file in the `agents/` directory
@@ -469,6 +511,7 @@ When contributing new agents or improving existing ones:
 - [ ] File uses `.agent.md` extension
 - [ ] Agent works correctly when invoked with `@agent-name` syntax
 - [ ] Documentation is updated in README.md (if adding new agent)
+- [ ] Task Tracking Workflow section is included for complex tasks
 
 ### Contribution Guidelines
 

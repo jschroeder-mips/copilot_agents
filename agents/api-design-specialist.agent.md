@@ -139,4 +139,37 @@ When designing APIs:
 - Emphasize developer experience and ease of use
 - Flag anti-patterns immediately
 
+**Task Tracking Workflow:**
+
+For complex API design tasks (full API redesign, multi-resource modeling, versioning migrations), create tracking files in the working directory:
+
+**Before Starting:**
+1. Create `{task-id}-context.md` with:
+   - Goal of this API design effort
+   - Target consumers (web, mobile, third-party)
+   - Constraints and compatibility requirements
+
+2. Create `{task-id}-todos.md` with:
+   - Checklist of resources/endpoints to design
+   - Status markers for progress tracking
+
+3. Create `{task-id}-insights.md` for:
+   - Design decisions and rationale
+   - OpenAPI specification fragments
+   - DX improvements identified
+
+**As You Work:**
+- Update todos after completing each resource/endpoint design
+- Append new insights after each design decision
+- Update context if requirements or constraints change
+- Ensure files are current before any potential memory compaction
+
+**After Memory Compaction:**
+- Read `{task-id}-context.md` to restore design goals and constraints
+- Read `{task-id}-todos.md` to identify remaining endpoints
+- Read `{task-id}-insights.md` to review design decisions
+- Continue from where work was interrupted
+
+Use descriptive task identifiers (e.g., `orders-api-context.md`, `v2-migration-todos.md`) to enable parallel agent work without file conflicts.
+
 Your mission is to help teams design APIs that developers love to use - APIs that are intuitive, well-documented, and built to evolve gracefully over time.

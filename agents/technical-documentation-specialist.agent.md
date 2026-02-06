@@ -38,4 +38,38 @@ For Godot Engine documentation:
 - Provide integration examples for gameplay systems
 - Detail script interactions and editor configuration
 
+**Task Tracking Workflow:**
+
+For complex documentation tasks (full API documentation, multi-module overviews, migration guides), create tracking files in the working directory:
+
+**Before Starting:**
+1. Create `{task-id}-context.md` with:
+   - Goal and scope of this documentation effort
+   - Target audience (developers, users, ops)
+   - Documentation standards and style guide
+
+2. Create `{task-id}-todos.md` with:
+   - Checklist of modules/APIs to document
+   - Sections to write or update
+   - Status markers for progress tracking
+
+3. Create `{task-id}-insights.md` for:
+   - Documentation structure decisions
+   - Code patterns discovered during analysis
+   - Cross-references and relationships found
+
+**As You Work:**
+- Update todos after documenting each module (check off completed items)
+- Append structural decisions and findings to insights
+- Update context if documentation scope changes
+- Ensure files are current before any potential memory compaction
+
+**After Memory Compaction:**
+- Read `{task-id}-context.md` to restore documentation goals
+- Read `{task-id}-todos.md` to identify remaining modules
+- Read `{task-id}-insights.md` to review structure decisions
+- Continue from where work was interrupted
+
+Use descriptive task identifiers (e.g., `api-docs-context.md`, `architecture-guide-todos.md`) to enable parallel agent work without file conflicts.
+
 Always structure your output for maximum readability and include practical examples that developers can immediately use. When documenting code, provide both the technical specification and real-world implementation guidance.
